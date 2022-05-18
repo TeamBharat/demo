@@ -10,20 +10,17 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import pageobjects.homepage;
-import pageobjects.loginpage;
+import pageobjects.FilterPage;
 
 
 public class base {
@@ -31,7 +28,7 @@ public class base {
 	public WebDriver driver;
 	public static ExtentReports extent;
 	public ExtentTest logger;
-	public loginpage login;
+	public FilterPage login;
 	public homepage home;
 
 	@BeforeSuite
@@ -109,8 +106,8 @@ public class base {
 	public void setUp(Method method) {
     	System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\driver\\chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("https://staging.zomepower.com/");
-		login = new loginpage(driver);
+		driver.get("https://www.makemytrip.com/");
+		login = new FilterPage(driver);
 		home=new homepage(driver);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().fullscreen();
